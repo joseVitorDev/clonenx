@@ -32,7 +32,7 @@ export default function Home() {
     return () => clearTimeout(delayTimeout);
   }, []);
 
-  const updateBalance = (newBalance) => {
+  const updateBalance = (newBalance: any) => {
     setBalance(newBalance);
     nookies.set(null, 'balance', newBalance.toFixed(2));
     console.log(balance);
