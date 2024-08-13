@@ -16,13 +16,13 @@ export function useBalance() {
     }
   }, []);
 
-  const updateBalance = (amount) => {
+  const updateBalance = (amount: any) => {
     const newBalance = balance + amount;
     setBalance(newBalance);
     nookies.set(null, 'balance', newBalance.toFixed(2), { path: '/' });
   };
 
-  const updateSeriesIndex = (index) => {
+  const updateSeriesIndex = (index: any) => {
     setCurrentSeriesIndex(index);
     nookies.set(null, 'currentSeriesIndex', index.toString(), { path: '/' });
   };
