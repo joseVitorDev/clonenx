@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { useRouter } from "next/router";
+
 import { useBalance } from "@/hook/useBalance";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ export function InitialContent() {
 
   const { balance, updateBalance } = useBalance();
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e: any) => {
     setEmail(e.target.value);
     setError(""); 
   };

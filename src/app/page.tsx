@@ -49,11 +49,11 @@ export default function Home() {
 
   return (
     <>
-      <Header balance={balance} />
+      <Header />
       <div className="relative flex flex-col md:flex-row flex-grow w-full">
         <Image alt="Banner" src={Banner} className="object-cover h-[35rem]" />
         <main className="absolute inset-x-0 top-24 md:top-48 flex flex-col text-white text-center px-4">
-          <InitialContent updateBalance={updateBalance} />
+          <InitialContent />
         </main>
       </div>
       <section className="border-b-8 border-gray-900 p-6">

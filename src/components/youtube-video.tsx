@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { FaPlay } from "react-icons/fa";
 
+interface props {
+  videoId: any
+}
 
-export default function YouTubeVideo({ videoId }) {
+
+export default function YouTubeVideo({ videoId }: props) {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {

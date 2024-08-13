@@ -50,7 +50,7 @@ export function Teste() {
     }, 3000); 
   };
 
-  const handleRecommendationClick = (value) => {
+  const handleRecommendationClick = (value: any) => {
     setRecommendation(value);
   };
 
