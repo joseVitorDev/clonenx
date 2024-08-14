@@ -6,8 +6,10 @@ import { FaStar } from "react-icons/fa";
 import YouTubeVideo from "./youtube-video";
 import { useBalance } from "@/hook/useBalance";
 import { Loading } from "./loader";
+import { useRouter } from "next/navigation";
 
-export function Teste() {
+export function Quiz() {
+  const {push} = useRouter()
   const seriesData = [
     { videoId: "RA2gB0WWUyg", value: 37.9 },
     { videoId: "iS5xXr-GOnM", value: 27.9 },
@@ -21,7 +23,7 @@ export function Teste() {
     { videoId: "2UlW4zoRwoE", value: 15 },
   ];
 
-  const { balance, currentSeriesIndex, updateBalance, updateSeriesIndex } = useBalance();
+  const { currentSeriesIndex, updateBalance, updateSeriesIndex } = useBalance();
 
   const [rating, setRating] = useState(0);
   const [recommendation, setRecommendation] = useState(null);
@@ -33,23 +35,29 @@ export function Teste() {
   }, []);
 
   const handleNextSeriesClick = () => {
-    setLoading(true); 
-
+    setLoading(true);
+  
     setTimeout(() => {
-      const nextSeriesIndex = (currentSeriesIndex + 1) % seriesData.length;
-      updateSeriesIndex(nextSeriesIndex);
-    
+      const nextSeriesIndex = currentSeriesIndex + 1;
+  
+      if (nextSeriesIndex >= seriesData.length) {
 
-      setRating(0);
-      setRecommendation(null);
-    
+        updateSeriesIndex(0); 
 
-      updateBalance(seriesData[nextSeriesIndex].value);
+        push("/saque");
+      } else {
 
-      window.location.reload();
-    }, 3000); 
+        updateSeriesIndex(nextSeriesIndex);
+        
+        setRating(0);
+        setRecommendation(null);
+  
+        updateBalance(seriesData[nextSeriesIndex].value);
+  
+        window.location.reload();
+      }
+    }, 2000);
   };
-
   const handleRecommendationClick = (value: any) => {
     setRecommendation(value);
   };
@@ -61,7 +69,7 @@ export function Teste() {
   }
 
   return (
-    <div id="textoprincipal" className="text-white w-full max-w-2xl mx-auto flex flex-col justify-center items-center text-center text-xl md:text-2xl space-y-6">
+    <div id="textoprincipal" className="text-white w-full max-w-xl mx-auto flex flex-col justify-center items-center text-center text-xl md:text-2xl space-y-6">
       <YouTubeVideo videoId={currentSeries.videoId} />
 
       <div id="avaloacaoserie" className="space-y-6">
@@ -93,13 +101,13 @@ export function Teste() {
           type="text"
           id="inputtypetext"
           placeholder="Escreva aqui..."
-          className="border border-white/25 bg-black bg-opacity-70 text-white rounded-md w-full md:w-[30rem] p-3 font-bold placeholder-white/50"
+          className="border border-white/25 bg-black bg-opacity-70 text-white rounded-md w-[23rem] md:w-[30rem] p-3 font-bold placeholder-white/50"
         />
       </div>
 
-      <div id="avaloacaoserie" className="mt-6">
+      <div id="avaloacaoserie" className="mt-6 ">
         <p id="avaliacaotexto" className="text-lg font-semibold">Recomendaria esta série?</p>
-        <div id="simounaonet" className="flex justify-between mt-3 w-[30rem]">
+        <div id="simounaonet" className="flex justify-between mt-3 md:w-[31rem] w-[24rem]">
           <button
             className={`border w-full rounded-md py-3 font-bold ml-3 ${
               recommendation === 'yes' ? 'bg-red-600 text-white' : 'bg-transparent text-white border-red-700 hover:bg-red-600'
@@ -122,7 +130,7 @@ export function Teste() {
       <button
         onClick={handleNextSeriesClick}
         id="botaoproximaetapa"
-        className="bg-red-700 text-white font-bold p-3 w-[30rem] rounded-md text-lg"
+        className="bg-red-700 text-white font-bold p-3 w-full max-w-[23rem] md:max-w-[30rem] rounded-md text-lg"
       >
         PRÓXIMA SÉRIE
       </button>

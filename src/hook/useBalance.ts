@@ -27,8 +27,13 @@ export function useBalance() {
     nookies.set(null, 'currentSeriesIndex', index.toString(), { path: '/' });
   };
 
+  const currencyBalance = new Intl.NumberFormat('pt-BR', {
+    style: "currency",
+    currency: "BRL"
+  }) 
+
   return {
-    balance,
+    balance: currencyBalance.format(balance),
     currentSeriesIndex,
     updateBalance,
     updateSeriesIndex,

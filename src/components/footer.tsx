@@ -2,7 +2,7 @@ export function Footer(){
   return (
     <footer className="text-[#656e76] bg-black">
     <div className="p-12">
-      <p className='mb-4 text-center md:text-start'>Dúvidas? Ligue 0800 591 8942</p>
+      <p className='mb-4 text-center md:text-start'>Dúvidas? Ligue 0800 591 2876</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-start">
         <ul>
           <li className="pb-3">Perguntas frequentes</li>

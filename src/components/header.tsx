@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import LogoNetflix from '@/assets/logo.png';
 import { useBalance } from "@/hook/useBalance";
+import Link from "next/link";
 
 export function Header() {
   const [isBlack, setIsBlack] = useState(false);
@@ -24,14 +25,14 @@ export function Header() {
         isBlack ? 'bg-black' : 'bg-gradient-to-b from-gray-900 via-transparent'
       }`}
     >
-      <div className="flex items-center">
+      <Link href={'/'} className="flex items-center">
         <Image src={LogoNetflix} alt="Netflix Logo" className="w-[8rem] mr-4" />
-      </div>
+      </Link>
 
       <div className="flex items-center">
         <button className="flex items-center">
           <div className="p-2 bg-red-600 rounded-xl text-white">
-            Saldo: R$ <b>{balance.toFixed(2)}</b>
+            Saldo: <b>{balance}</b>
           </div>
         </button>
       </div>
